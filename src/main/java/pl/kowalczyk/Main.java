@@ -17,7 +17,7 @@ public class Main {
     }
 
     private static List<Integer> ListOfMass() throws FileNotFoundException {
-        File file = new File("SumMassOfSpacecraft.txtt");
+        File file = new File("SumMassOfSpacecraft.txt");
         List<Integer> massOfEachPart = new ArrayList<>();
 
         Scanner sc = new Scanner(file);
