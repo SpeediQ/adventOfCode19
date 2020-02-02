@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         System.out.println(sumOfFuelRequiredFirstGo(ListOfMass()));
         System.out.println(sumOfFuelRequiredSecondGo(ListOfMass()));
     }
@@ -15,20 +15,19 @@ public class Main {
     private static int fuelRequired(int mass) {
         return (mass / 3) - 2;
     }
-    private static List<Integer> ListOfMass() {
+
+    private static List<Integer> ListOfMass() throws FileNotFoundException {
         File file = new File("SumMassOfSpacecraft.txtt");
         List<Integer> massOfEachPart = new ArrayList<>();
-        try {
-            Scanner sc = new Scanner(file);
-            while (sc.hasNextLine()) {
-                massOfEachPart.add(Integer.parseInt(sc.nextLine()));
-            }
-        } catch (FileNotFoundException e) {
-            System.out.println("Brak PLIKU SumMassOfSpacecraft.txt !");
-            e.printStackTrace();
+
+        Scanner sc = new Scanner(file);
+        while (sc.hasNextLine()) {
+            massOfEachPart.add(Integer.parseInt(sc.nextLine()));
         }
+
         return massOfEachPart;
     }
+
     private static int sumOfFuelRequiredFirstGo(List<Integer> list) {
         int sum = 0;
         for (int value : list) {
@@ -36,6 +35,7 @@ public class Main {
         }
         return sum;
     }
+
     private static int sumOfFuelRequiredSecondGo(List<Integer> list) {
         int sum = 0;
         for (int value : list) {
