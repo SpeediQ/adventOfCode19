@@ -15,7 +15,6 @@ public class Main {
     private static int fuelRequired(int mass) {
         return (mass / 3) - 2;
     }
-
     private static List<Integer> ListOfMass() {
         File file = new File("SumMassOfSpacecraft.txt");
         List<Integer> massOfEachPart = new ArrayList<>();
@@ -27,11 +26,9 @@ public class Main {
         } catch (FileNotFoundException e) {
             System.out.println("Brak PLIKU SumMassOfSpacecraft.txt !");
             e.printStackTrace();
-
         }
         return massOfEachPart;
     }
-
     private static int sumOfFuelRequiredFirstGo(List<Integer> list) {
         int sum = 0;
         for (int value : list) {
@@ -39,21 +36,19 @@ public class Main {
         }
         return sum;
     }
-
     private static int sumOfFuelRequiredSecondGo(List<Integer> list) {
-        int rest = 0;
-        int sumOfPart = 0;
         int sum = 0;
         for (int value : list) {
-
-            do {
-                sumOfPart += rest;
-                rest = fuelRequired(value);
-            } while (fuelRequired(rest) <= 0);
-            sumOfPart += rest;
-            sum+=sumOfPart;
+            int addValue = 0;
+            int restOfPart = fuelRequired(value);
+            int sumOfPart = 0;
+            while (fuelRequired(restOfPart) > 0) {
+                addValue += restOfPart;
+                restOfPart = fuelRequired(restOfPart);
+            }
+            sumOfPart = addValue + restOfPart;
+            sum += sumOfPart;
         }
-
         return sum;
     }
 }
