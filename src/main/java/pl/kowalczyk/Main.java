@@ -16,7 +16,7 @@ public class Main {
         return (mass / 3) - 2;
     }
     private static List<Integer> ListOfMass() {
-        File file = new File("SumMassOfSpacecraft.txt");
+        File file = new File("SumMassOfSpacecraft.txtt");
         List<Integer> massOfEachPart = new ArrayList<>();
         try {
             Scanner sc = new Scanner(file);
@@ -47,6 +47,7 @@ public class Main {
                 restOfPart = fuelRequired(restOfPart);
             }
             sumOfPart = addValue + restOfPart;
+            // Sum of all Part
             sum += sumOfPart;
         }
         return sum;
