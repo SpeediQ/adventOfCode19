@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Main {
+public class day1 {
     public static void main(String[] args) throws FileNotFoundException {
         System.out.println(sumOfFuelRequiredFirstGo(ListOfMass()));
         System.out.println(sumOfFuelRequiredSecondGo(ListOfMass()));
@@ -17,7 +17,7 @@ public class Main {
     }
 
     private static List<Integer> ListOfMass() throws FileNotFoundException {
-        File file = new File("SumMassOfSpacecraft.txt");
+        File file = new File("day1.txt");
         List<Integer> massOfEachPart = new ArrayList<>();
 
         Scanner sc = new Scanner(file);
