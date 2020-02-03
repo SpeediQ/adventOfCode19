@@ -19,15 +19,23 @@ public class day2 {
         Scanner sc = new Scanner(file);
         while (sc.hasNextLine()) {
             String stringNumber = sc.nextLine();
-            integerList = Arrays.stream(stringNumber.split("\\W"))
+            integerList = Arrays.stream(stringNumber.split(","))
                     .map(Integer::parseInt)
                     .collect(Collectors.toList());
         }
         return integerList;
     }
+    private static List<Integer> nounAndVerbList(List<Integer> oldList){
+        List<Integer> newStep2List = oldList;
+        modifiedList(newStep2List);
+
+        return null;
+    }
 
     private static List<Integer> modifiedList(List<Integer> oldList) {
         List<Integer> newList = oldList;
+        newList.set(1,12);
+        newList.set(2,2);
         for (int i = 0; i <= newList.size() / 4; i++) {
             int key = newList.get(0 + (4 * i));
             int in1Index = newList.get(1 + (4 * i));
@@ -47,4 +55,5 @@ public class day2 {
         }
         return newList;
     }
+
 }
