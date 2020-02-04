@@ -1,4 +1,4 @@
-package pl.kowalczyk;
+package pl.kowalczyk.notMy;
 
 import java.io.BufferedReader;
 import java.io.File;
