@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class day1 {
+public class Day1 {
     public static void main(String[] args) throws FileNotFoundException {
         System.out.println(sumOfFuelRequiredFirstGo(ListOfMass()));
         System.out.println(sumOfFuelRequiredSecondGo(ListOfMass()));
