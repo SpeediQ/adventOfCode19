@@ -1,4 +1,4 @@
-package pl.kowalczyk;
+package pl.kowalczyk.day2;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 public class Day2 {
     public static void main(String[] args) throws FileNotFoundException {
         System.out.println("Day2: Part1: " + modifiedList(fileToList()).get(0));
-        System.out.println("Day2: Part2: " + nextTry(fileToList()));
+        System.out.println("Day2: Part2: " + valueSearch(fileToList()));
 
     }
 
@@ -25,7 +25,6 @@ public class Day2 {
                     .map(Integer::parseInt)
                     .collect(Collectors.toList());
         }
-
         return integerList;
     }
 
@@ -58,19 +57,13 @@ public class Day2 {
         return newList;
     }
 
-    private static int nextTry(List<Integer> inList) {
-
+    private static int valueSearch(List<Integer> inList) {
         List<Integer> copyOfInList = copyList(inList);
-
-
         int wantedValue = 19690720;
         int valueNoun = 0;
         int valueVerb = 0;
-
-
         copyOfInList.set(1, valueNoun);
         copyOfInList.set(2, valueVerb);
-
         while (valueVerb < 99 && !(modificationKey(copyOfInList)).get(0).equals(wantedValue)) {
             try {
                 valueVerb++;
@@ -84,17 +77,12 @@ public class Day2 {
                     }
                 }
             } catch (IndexOutOfBoundsException e) {
-                System.out.println("błąd");
+                System.out.println(e.getMessage());
             }
         }
-
-
         return 100 * valueNoun + valueVerb;
     }
-
     private static List<Integer> copyList(List<Integer> oldList) {
         return new ArrayList<>(oldList);
     }
-
-
 }
