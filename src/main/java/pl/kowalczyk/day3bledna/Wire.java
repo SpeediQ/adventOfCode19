@@ -1,9 +1,6 @@
-package pl.kowalczyk.day3;
+package pl.kowalczyk.day3bledna;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Wire {
     String name;
