@@ -8,7 +8,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Wire {
-    Point head = new Point(0, 0);
+    Point head = new Point("0", "0");
     List<Point> body = new ArrayList<>();
 
     @Override
@@ -28,39 +28,47 @@ public class Wire {
     }
 
 
-
     public void wirePath(String path) {
         Pattern pattern = Pattern.compile("(\\D)(\\d{1,3})");
         Matcher matcher = pattern.matcher(path);
+        String tempValue = null;
         while (matcher.find()) {
 
             if (matcher.group(1).equals("U")) {
-                int value = Integer.parseInt(matcher.group(2));
-                for (int i = 1; i <= value; i++) {
-                    body.add(new Point(head.getX(), head.getY() + i));
+                int valueFromFile = Integer.parseInt(matcher.group(2));
+                for (int i = 1; i <= valueFromFile; i++) {
+                    tempValue = Integer.parseInt(head.getY()) + i + "";
+                    body.add(new Point(head.getX(), tempValue));
                 }
-                head.setY(head.getY() + value);
+                String newStringValue = Integer.parseInt(head.getY()) + valueFromFile + "";
+                head.setY(newStringValue);
             }
             if (matcher.group(1).equals("D")) {
-                int value = Integer.parseInt(matcher.group(2));
-                for (int i = 1; i <= value; i++) {
-                    body.add(new Point(head.getX(), head.getY() - i));
+                int valueFromFile = Integer.parseInt(matcher.group(2));
+                for (int i = 1; i <= valueFromFile; i++) {
+                    tempValue = Integer.parseInt(head.getY()) - i + "";
+                    body.add(new Point(head.getX(), tempValue));
                 }
-                head.setY(head.getY() - value);
+                String newStringValue = Integer.parseInt(head.getY()) - valueFromFile + "";
+                head.setY(newStringValue);
             }
             if (matcher.group(1).equals("R")) {
-                int value = Integer.parseInt(matcher.group(2));
-                for (int i = 1; i <= value; i++) {
-                    body.add(new Point(head.getX() + i, head.getY()));
+                int valueFromFile = Integer.parseInt(matcher.group(2));
+                for (int i = 1; i <= valueFromFile; i++) {
+                    tempValue = Integer.parseInt(head.getX()) + i + "";
+                    body.add(new Point(tempValue, head.getY()));
                 }
-                head.setX(head.getX() + value);
+                String newStringValue = Integer.parseInt(head.getX()) + valueFromFile + "";
+                head.setX(newStringValue);
             }
             if (matcher.group(1).equals("L")) {
-                int value = Integer.parseInt(matcher.group(2));
-                for (int i = 1; i <= value; i++) {
-                    body.add(new Point(head.getX() - i, head.getY()));
+                int valueFromFile = Integer.parseInt(matcher.group(2));
+                for (int i = 1; i <= valueFromFile; i++) {
+                    tempValue = Integer.parseInt(head.getX()) - i + "";
+                    body.add(new Point(tempValue, head.getY()));
                 }
-                head.setX(head.getX() - value);
+                String newStringValue = Integer.parseInt(head.getX()) - valueFromFile + "";
+                head.setX(newStringValue);
             }
 
         }

@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
-    private Point head = new Point(0, 0);
 
 
     public static void main(String[] args) throws FileNotFoundException {
@@ -16,15 +15,41 @@ public class Main {
         String wire2Path = wire.readFromFile().get(1);
         wire1.wirePath(wire1Path);
         wire2.wirePath(wire2Path);
+//        System.out.println(wire1);
+//        System.out.println(wire2);
         List<Point> cross = new ArrayList<>();
 
+        for (int i = 0; i < wire1.body.size(); i++) {
+            for (int j = 0; j < wire2.body.size(); j++) {
+
+                if (wire1.body.get(i).getMarge().equals(wire2.body.get(j).getMarge())) {
+                    cross.add(wire1.body.get(i));
+                }
+
+            }
+        }
+        int distance = Math.abs(Integer.parseInt(cross.get(0).getX())) + Math.abs(Integer.parseInt(cross.get(0).getY()));
+        for (Point point : cross) {
+            int xAbs = Integer.parseInt(point.getX());
+            int yAbs = Integer.parseInt(point.getY());
+            int tempDistance = Math.abs(xAbs) + Math.abs(yAbs);
+            if (tempDistance < distance) {
+                distance = tempDistance;
+            }
+        }
+//        System.out.println(cross);
+        System.out.println(distance);
 
 
+//        List<Point> cross = new ArrayList<>();
+//
+//
+//
 //        int valueX_Wire1 = 0;
 //        int valueY_Wire1 = 0;
 //        int valueX_Wire2 = 0;
 //        int valueY_Wire2 = 0;
-
+//
 //        for (int i = 0; i < wire1.body.size(); i++) {
 //            for (int j = 0; j < wire2.body.size(); j++) {
 //                valueX_Wire1 = wire1.body.get(i).getX();
