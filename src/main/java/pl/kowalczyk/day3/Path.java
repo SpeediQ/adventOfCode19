@@ -22,7 +22,7 @@ public class Path {
     }
 
     public void creatingWireSegments(List<Section> sectionList, String path) {
-        Pattern pattern = Pattern.compile("(\\D)(\\d{1,3})");
+        Pattern pattern = Pattern.compile("(\\D)(\\d{1,4})");
         Matcher matcher = pattern.matcher(path);
 
         while (matcher.find()) {

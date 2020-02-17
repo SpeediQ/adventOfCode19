@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class Wire {
-    private List<Section> sectionList = new ArrayList<>();
+    public List<Section> sectionList = new ArrayList<>();
 
     @Override
     public boolean equals(Object o) {
@@ -104,6 +104,50 @@ class Point{
         return "Point{" +
                 "x=" + x +
                 ", y=" + y +
+                '}';
+    }
+}
+class Cross{
+    int sectionNumber_wire1;
+    int sectionNumber_wire2;
+    Point crossPoint;
+
+    public Cross(int sectionNumber_wire1, int sectionNumber_wire2, Point crossPoint) {
+        this.sectionNumber_wire1 = sectionNumber_wire1;
+        this.sectionNumber_wire2 = sectionNumber_wire2;
+        this.crossPoint = crossPoint;
+    }
+
+    public int getSectionNumber_wire1() {
+        return sectionNumber_wire1;
+    }
+
+    public void setSectionNumber_wire1(int sectionNumber_wire1) {
+        this.sectionNumber_wire1 = sectionNumber_wire1;
+    }
+
+    public int getSectionNumber_wire2() {
+        return sectionNumber_wire2;
+    }
+
+    public void setSectionNumber_wire2(int sectionNumber_wire2) {
+        this.sectionNumber_wire2 = sectionNumber_wire2;
+    }
+
+    public Point getCrossPoint() {
+        return crossPoint;
+    }
+
+    public void setCrossPoint(Point crossPoint) {
+        this.crossPoint = crossPoint;
+    }
+
+    @Override
+    public String toString() {
+        return "Cross{" +
+                "sectionNumber_wire1=" + sectionNumber_wire1 +
+                ", sectionNumber_wire2=" + sectionNumber_wire2 +
+                ", crossPoint=" + crossPoint +
                 '}';
     }
 }
