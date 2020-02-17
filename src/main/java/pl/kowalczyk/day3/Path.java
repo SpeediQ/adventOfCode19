@@ -21,7 +21,7 @@ public class Path {
         return WiresList;
     }
 
-    public void creatingWireSegments(List<Section> sectionList, String path) {
+    public List<Section> creatingWireSegments(List<Section> sectionList, String path) {
         Pattern pattern = Pattern.compile("(\\D)(\\d{1,4})");
         Matcher matcher = pattern.matcher(path);
 
@@ -71,6 +71,7 @@ public class Path {
                 }
             }
         }
+        return sectionList;
     }
 
 
