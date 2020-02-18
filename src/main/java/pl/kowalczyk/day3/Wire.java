@@ -106,17 +106,26 @@ class Point{
                 ", y=" + y +
                 '}';
     }
+
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
 }
 class Cross{
     int sectionNumber_wire1;
     int sectionNumber_wire2;
-    Point crossPoint;
-
-    public Cross(int sectionNumber_wire1, int sectionNumber_wire2, Point crossPoint) {
-        this.sectionNumber_wire1 = sectionNumber_wire1;
-        this.sectionNumber_wire2 = sectionNumber_wire2;
-        this.crossPoint = crossPoint;
-    }
 
     public int getSectionNumber_wire1() {
         return sectionNumber_wire1;
@@ -134,20 +143,16 @@ class Cross{
         this.sectionNumber_wire2 = sectionNumber_wire2;
     }
 
-    public Point getCrossPoint() {
-        return crossPoint;
-    }
-
-    public void setCrossPoint(Point crossPoint) {
-        this.crossPoint = crossPoint;
-    }
-
     @Override
     public String toString() {
         return "Cross{" +
                 "sectionNumber_wire1=" + sectionNumber_wire1 +
                 ", sectionNumber_wire2=" + sectionNumber_wire2 +
-                ", crossPoint=" + crossPoint +
                 '}';
+    }
+
+    public Cross(int sectionNumber_wire1, int sectionNumber_wire2) {
+        this.sectionNumber_wire1 = sectionNumber_wire1;
+        this.sectionNumber_wire2 = sectionNumber_wire2;
     }
 }
