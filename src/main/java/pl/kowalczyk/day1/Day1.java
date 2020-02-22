@@ -1,5 +1,7 @@
 package pl.kowalczyk.day1;
 
+import pl.kowalczyk.FileUtil;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -8,27 +10,22 @@ import java.util.Scanner;
 
 public class Day1 {
     public static void main(String[] args) throws FileNotFoundException {
-        System.out.println(sumOfFuelRequiredFirstGo(ListOfMass()));
-        System.out.println(sumOfFuelRequiredSecondGo(ListOfMass()));
+        Day1 firstGo = new Day1();
+        Day1 secondGo = new Day1();
+        List<Integer> listOfMass = FileUtil.conversionFromStringToInteger(FileUtil.loadFile("files/day1.txt"));
+        int sumOfTheFuelRequirements = firstGo.sumOfFuelRequiredFirstGo(listOfMass);
+        int sumOfTheFuelRequirements_WithMassOfTheAddedFuel = secondGo.sumOfFuelRequiredSecondGo(listOfMass);
+
+        System.out.println("Answer 1.1: " + sumOfTheFuelRequirements);
+        System.out.println("Answer 1.2: " + sumOfTheFuelRequirements_WithMassOfTheAddedFuel);
     }
 
     private static int fuelRequired(int mass) {
         return (mass / 3) - 2;
     }
 
-    private static List<Integer> ListOfMass() throws FileNotFoundException {
-        File file = new File("day1.txt");
-        List<Integer> massOfEachPart = new ArrayList<>();
 
-        Scanner sc = new Scanner(file);
-        while (sc.hasNextLine()) {
-            massOfEachPart.add(Integer.parseInt(sc.nextLine()));
-        }
-
-        return massOfEachPart;
-    }
-
-    private static int sumOfFuelRequiredFirstGo(List<Integer> list) {
+    private int sumOfFuelRequiredFirstGo(List<Integer> list) {
         int sum = 0;
         for (int value : list) {
             sum += fuelRequired(value);
@@ -36,7 +33,7 @@ public class Day1 {
         return sum;
     }
 
-    private static int sumOfFuelRequiredSecondGo(List<Integer> list) {
+    private int sumOfFuelRequiredSecondGo(List<Integer> list) {
         int sum = 0;
         for (int value : list) {
             int addValue = 0;

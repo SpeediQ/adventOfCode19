@@ -1,5 +1,7 @@
 package pl.kowalczyk.day2;
 
+import pl.kowalczyk.FileUtil;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -10,33 +12,39 @@ import java.util.stream.Collectors;
 
 public class Day2 {
     public static void main(String[] args) throws FileNotFoundException {
-        System.out.println("Day2: Part1: " + modifiedList(fileToList()).get(0));
-        System.out.println("Day2: Part2: " + valueSearch(fileToList()));
+        Day2 part1 = new Day2();
+        Day2 part2 = new Day2();
+        List<String> listOfStrings = FileUtil.loadFile("files/day2.txt");
+        List<Integer> listOfIntegers = conversionToIntegerList(listOfStrings);
+        int valueOfFirstposition = part1.modifiedList(listOfIntegers).get(0);
+        int result = part2.valueSearch(listOfIntegers);
+        System.out.println("Answer 2.1: " + valueOfFirstposition);
+        System.out.println("Answer 2.2: " + result);
+
 
     }
 
-    private static List<Integer> fileToList() throws FileNotFoundException {
+    private static List<Integer> conversionToIntegerList(List<String> listOfStrings) {
         List<Integer> integerList = null;
-        File file = new File("day2.txt");
-        Scanner sc = new Scanner(file);
-        while (sc.hasNextLine()) {
-            String stringNumber = sc.nextLine();
-            integerList = Arrays.stream(stringNumber.split(","))
-                    .map(Integer::parseInt)
-                    .collect(Collectors.toList());
-        }
+        String allInOne = listOfStrings.get(0);
+
+        integerList = Arrays.stream(allInOne.split(","))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+
         return integerList;
     }
 
-    private static List<Integer> modifiedList(List<Integer> inList) {
-        List<Integer> outList = copyList(inList);
-        outList.set(1, 12);
-        outList.set(2, 2);
-        return modificationKey(outList);
+
+    private List<Integer> modifiedList(List<Integer> inList) {
+
+        inList.set(1, 12);
+        inList.set(2, 2);
+        return modificationKey(inList);
     }
 
     private static List<Integer> modificationKey(List<Integer> outList) {
-        List<Integer> newList = copyList(outList);
+        List<Integer> newList = new ArrayList<>(outList);
         for (int i = 0; i <= outList.size() / 4; i++) {
             int key = newList.get((4 * i));
             int in1Index = newList.get(1 + (4 * i));
@@ -57,8 +65,7 @@ public class Day2 {
         return newList;
     }
 
-    private static int valueSearch(List<Integer> inList) {
-        List<Integer> copyOfInList = copyList(inList);
+    private int valueSearch(List<Integer> copyOfInList) {
         int wantedValue = 19690720;
         int valueNoun = 0;
         int valueVerb = 0;
@@ -82,7 +89,6 @@ public class Day2 {
         }
         return 100 * valueNoun + valueVerb;
     }
-    private static List<Integer> copyList(List<Integer> oldList) {
-        return new ArrayList<>(oldList);
-    }
+
+
 }
