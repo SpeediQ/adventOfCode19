@@ -15,18 +15,18 @@ public class Day3 {
         List<String> listOfSteps_String = FileUtil.loadFile("files/day3.txt");
         String[] input_wire1 = listOfSteps_String.get(0).split(",");
         String[] input_wire2 = listOfSteps_String.get(1).split(",");
-
-
         main.visitedPoints(input_wire1);
+
+
         int shortestDistance = main.checkingPoints(input_wire2);
-        int shortestSteps = main.findShortestWay(input_wire2);
+        int shortestSteps = main.findShortestWay();
         System.out.println("Answer 3.1: " + shortestDistance);
         System.out.println("Answer 3.2: " + shortestSteps);
 
 
     }
 
-    private int findShortestWay(String[] wire2_String) {
+    private int findShortestWay() {
         int sum = Integer.MAX_VALUE;
         for (Point point : numberOfSteps_Map.keySet()) {
             int temp = numberOfSteps_Map.get(point) + visitedPoints_Map.get(point);
