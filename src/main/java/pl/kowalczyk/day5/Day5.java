@@ -7,7 +7,7 @@ import pl.kowalczyk.FileUtil;
 public class Day5 {
     public Day5() {
         Scanner scanner = new Scanner(System.in);
-        List<String> listOfStrings = FileUtil.loadFile("files/day5.txt");
+        List<String> listOfStrings = FileUtil.loadFileToList("files/day5.txt");
         String[] listOfString = ((String)listOfStrings.get(0)).split(",");
         Integer[] listOfInteger = new Integer[listOfString.length];
 

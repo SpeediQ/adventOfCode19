@@ -5,10 +5,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class FileUtil {
-    public static List<String> loadFile(String location) {
+    public static List<String> loadFileToList(String location) {
         File file = new File(location);
         List<String> listOfStrings = new ArrayList<>();
 
@@ -27,6 +28,7 @@ public class FileUtil {
         return listOfStrings;
     }
 
+
     public static List<Integer> conversionFromStringToInteger(List<String> listOfStrings){
         List<Integer> listOfIntegers = new ArrayList<>();
         for (String string : listOfStrings) {
@@ -34,4 +36,5 @@ public class FileUtil {
         }
         return listOfIntegers;
     }
+
 }

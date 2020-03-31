@@ -2,17 +2,14 @@ package pl.kowalczyk.day1;
 
 import pl.kowalczyk.FileUtil;
 
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class Day1 {
     public static void main(String[] args) throws FileNotFoundException {
         Day1 firstGo = new Day1();
         Day1 secondGo = new Day1();
-        List<Integer> listOfMass = FileUtil.conversionFromStringToInteger(FileUtil.loadFile("files/day1.txt"));
+        List<Integer> listOfMass = FileUtil.conversionFromStringToInteger(FileUtil.loadFileToList("files/day1.txt"));
         int sumOfTheFuelRequirements = firstGo.sumOfFuelRequiredFirstGo(listOfMass);
         int sumOfTheFuelRequirements_WithMassOfTheAddedFuel = secondGo.sumOfFuelRequiredSecondGo(listOfMass);
 

@@ -3,12 +3,11 @@ package pl.kowalczyk.day4;
 import pl.kowalczyk.FileUtil;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Day4 {
 
     public static void main(String[] args) {
-        List<String> strings = FileUtil.loadFile("files/day4.txt");
+        List<String> strings = FileUtil.loadFileToList("files/day4.txt");
         String[] split = strings.get(0).split("-");
 
         final int minValue = Integer.parseInt(split[0]);

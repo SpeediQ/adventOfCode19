@@ -2,19 +2,17 @@ package pl.kowalczyk.day2;
 
 import pl.kowalczyk.FileUtil;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class Day2 {
     public static void main(String[] args) throws FileNotFoundException {
         Day2 part1 = new Day2();
         Day2 part2 = new Day2();
-        List<String> listOfStrings = FileUtil.loadFile("files/day2.txt");
+        List<String> listOfStrings = FileUtil.loadFileToList("files/day2.txt");
         List<Integer> listOfIntegers = conversionToIntegerList(listOfStrings);
         int valueOfFirstposition = part1.modifiedList(listOfIntegers).get(0);
         int result = part2.valueSearch(listOfIntegers);
@@ -29,7 +27,7 @@ public class Day2 {
         String allInOne = listOfStrings.get(0);
 
         integerList = Arrays.stream(allInOne.split(","))
-                .map(Integer::parseInt)
+                .map(s -> Integer.parseInt(s))
                 .collect(Collectors.toList());
 
         return integerList;

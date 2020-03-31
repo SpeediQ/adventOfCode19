@@ -12,7 +12,7 @@ public class Day3 {
 
     public static void main(String[] args) {
         Day3 main = new Day3();
-        List<String> listOfSteps_String = FileUtil.loadFile("files/day3.txt");
+        List<String> listOfSteps_String = FileUtil.loadFileToList("files/day3.txt");
         String[] input_wire1 = listOfSteps_String.get(0).split(",");
         String[] input_wire2 = listOfSteps_String.get(1).split(",");
         main.visitedPoints(input_wire1);
